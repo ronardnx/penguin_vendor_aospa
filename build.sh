@@ -263,26 +263,6 @@ elif [ "${KEY_MAPPINGS}" ]; then
 
     checkExit
 
-    echo -e "${CLR_BLD_BLU}Generating signed install package${CLR_RST}"
-    ota_from_target_files -k $KEY_MAPPINGS/releasekey \
-        --block ${INCREMENTAL} \
-        $AOSPA_VERSION-$DEVICE-signed-target_files.zip \
-        $AOSPA_VERSION-$DEVICE.zip
-
-    checkExit
-
-    if [ "$DELTA_TARGET_FILES" ]; then
-        # die if base target doesn't exist
-        if [ ! -f "$DELTA_TARGET_FILES" ]; then
-                echo -e "${CLR_BLD_RED}Delta error: base target files don't exist ($DELTA_TARGET_FILES)${CLR_RST}"
-                exit 1
-        fi
-        ota_from_target_files -k $KEY_MAPPINGS/releasekey \
-            --block --incremental_from $DELTA_TARGET_FILES \
-            $AOSPA_VERSION-$DEVICE-signed-target_files.zip \
-            $AOSPA_VERSION-$DEVICE-delta.zip
-        checkExit
-    fi
 
     if [ "$FLAG_IMG_ZIP" = 'y' ]; then
         echo -e "${CLR_BLD_BLU}Generating signed fastboot package${CLR_RST}"
@@ -290,6 +270,27 @@ elif [ "${KEY_MAPPINGS}" ]; then
             $AOSPA_VERSION-$DEVICE-signed-target_files.zip \
             $AOSPA_VERSION-$DEVICE-image.zip
         checkExit
+    else
+        echo -e "${CLR_BLD_BLU}Generating signed install package${CLR_RST}"
+        ota_from_target_files -k $KEY_MAPPINGS/releasekey \
+            --block ${INCREMENTAL} \
+            aospa-$AOSPA_VERSION-signed-target_files.zip \
+            aospa-$AOSPA_VERSION.zip
+
+        checkExit
+
+        if [ "$DELTA_TARGET_FILES" ]; then
+            # die if base target doesn't exist
+            if [ ! -f "$DELTA_TARGET_FILES" ]; then
+                    echo -e "${CLR_BLD_RED}Delta error: base target files don't exist ($DELTA_TARGET_FILES)${CLR_RST}"
+                    exit 1
+            fi
+            ota_from_target_files -k $KEY_MAPPINGS/releasekey \
+                --block --incremental_from $DELTA_TARGET_FILES \
+                aospa-$AOSPA_VERSION-signed-target_files.zip \
+                aospa-$AOSPA_VERSION-delta.zip
+            checkExit
+        fi
     fi
 # Build rom package
 elif [ "$FLAG_IMG_ZIP" = 'y' ]; then
@@ -297,12 +298,6 @@ elif [ "$FLAG_IMG_ZIP" = 'y' ]; then
 
     checkExit
 
-    echo -e "${CLR_BLD_BLU}Generating install package${CLR_RST}"
-    ota_from_target_files \
-        "$OUT"/obj/PACKAGING/target_files_intermediates/aospa_$DEVICE-target_files.zip \
-        $AOSPA_VERSION-$DEVICE.zip
-
-    checkExit
 
     echo -e "${CLR_BLD_BLU}Generating fastboot package${CLR_RST}"
     img_from_target_files \
