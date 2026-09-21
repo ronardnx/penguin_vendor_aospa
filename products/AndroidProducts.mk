@@ -13,6 +13,8 @@ PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/davinci/aospa_davinci.mk \
     $(LOCAL_DIR)/dubai/aospa_dubai.mk \
     $(LOCAL_DIR)/fuxi/aospa_fuxi.mk \
+    $(LOCAL_DIR)/giulia/aospa_giulia.mk \
+    $(LOCAL_DIR)/giuliac/aospa_giuliac.mk \
     $(LOCAL_DIR)/ishtar/aospa_ishtar.mk \
     $(LOCAL_DIR)/lahaina/aospa_lahaina.mk \
     $(LOCAL_DIR)/lito/aospa_lito.mk \
@@ -48,6 +50,8 @@ COMMON_LUNCH_CHOICES += \
     aospa_davinci-userdebug \
     aospa_dubai-userdebug \
     aospa_fuxi-userdebug \
+    aospa_giulia-userdebug \
+    aospa_giuliac-userdebug \
     aospa_ishtar-userdebug \
     aospa_lahaina-userdebug \
     aospa_lito-userdebug \
