@@ -111,9 +111,13 @@ PRODUCT_PACKAGES += \
     vendor.aospa.power-service
 
 # Google - GMS, Pixel, and Mainline Modules
-$(call inherit-product, vendor/gms/products/gms.mk)
-$(call inherit-product, vendor/gms/common/common-vendor.mk)
-$(call inherit-product, vendor/google/pixel/config.mk)
+ifneq ($(wildcard vendor/aospa_gapps/config.mk),)
+$(call inherit-product, vendor/aospa_gapps/config.mk)
+else
+$(call inherit-product-if-exists, vendor/gms/products/gms.mk)
+$(call inherit-product-if-exists, vendor/gms/common/common-vendor.mk)
+endif
+$(call inherit-product-if-exists, vendor/google/pixel/config.mk)
 ifneq ($(TARGET_EXCLUDE_GMODULES), true)
 $(call inherit-product-if-exists, vendor/google/modules/build/mainline_modules.mk)
 endif
