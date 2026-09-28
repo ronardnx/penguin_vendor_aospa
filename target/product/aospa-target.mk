@@ -256,7 +256,6 @@ PRODUCT_PACKAGES += \
 # Telephony - AOSP
 PRODUCT_PACKAGES += \
     Dialer \
-    Stk
 
 PRODUCT_BOOT_JARS += \
     tcmiface \
@@ -302,5 +301,15 @@ $(call inherit-product, vendor/aospa/misc/ax_tflite/common.mk)
 # Keystore Compatibility
 PRODUCT_COPY_FILES += \
     vendor/aospa/target/init/keystore-compat.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/keystore-compat.rc
+
+
+# Remove legacy/unused AOSP packages
+PRODUCT_PACKAGES_REMOVE += \
+    BookmarkProvider \
+    HTMLViewer \
+    BasicDreams \
+    PhotoTable \
+    Traceur \
+    EasterEgg
 
 -include vendor/aospa-priv/keys/keys.mk
