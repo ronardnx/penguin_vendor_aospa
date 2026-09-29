@@ -55,10 +55,6 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # Boot Animation
 $(call inherit-product, vendor/aospa/bootanimation/bootanimation.mk)
 
-# Camera
-PRODUCT_PACKAGES += \
-    Aperture
-
 # curl
 PRODUCT_PACKAGES += \
     curl
@@ -302,6 +298,17 @@ $(call inherit-product, vendor/aospa/misc/ax_tflite/common.mk)
 PRODUCT_COPY_FILES += \
     vendor/aospa/target/init/keystore-compat.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/keystore-compat.rc
 
+
+# LineageOS / Core Apps
+PRODUCT_PACKAGES += \
+    Contacts \
+    DeskClock \
+    Etar \
+    ExactCalculator \
+    Glimpse \
+    LatinIME \
+    messaging \
+    ViaBrowser
 
 # Remove legacy/unused AOSP packages
 PRODUCT_PACKAGES_REMOVE += \
