@@ -319,4 +319,3 @@ PRODUCT_PACKAGES_REMOVE += \
     Traceur \
     EasterEgg
 
--include vendor/aospa-priv/keys/keys.mk
