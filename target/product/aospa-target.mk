@@ -317,5 +317,7 @@ PRODUCT_PACKAGES_REMOVE += \
     BasicDreams \
     PhotoTable \
     Traceur \
-    EasterEgg
+    EasterEgg \
+    DeviceIntelligenceNetworkPrebuilt \
+    DevicePersonalizationPrebuiltPixel2020
 
