@@ -22,3 +22,7 @@ include vendor/aospa/target/board/BoardConfigKernelLineage.mk
 
 # Soong
 include vendor/aospa/target/board/BoardConfigSoong.mk
+
+# Reserved size
+-include vendor/aospa/target/board/BoardConfigReservedSize.mk
+

@@ -1,0 +1,1 @@
+../target/board/BoardConfigReservedSize.mk
